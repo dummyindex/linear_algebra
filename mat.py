@@ -26,6 +26,14 @@ def mat_vec_mul(mat ,vec):
             acc += mat[r][c] * vec[c]
         res.append(acc)
     return Vec(res)
+
+def mat_scalar_mul(mat, k):
+    res = Mat([[mat[i][j] for j in range(mat.colLen)] for i in range(mat.rowLen)])
+    for i in range(mat.rowLen):
+        for j in range(mat.colLen):
+            res[i][j] *= k
+    return res
+            
 class Mat:
     __getitem__ = getitem
     def __init__(self, listlist):
@@ -47,6 +55,7 @@ class Mat:
             row+=1
         return res
 
+    __rmul__ = mat_scalar_mul
     def __mul__(self,other):
         if type(other) == Mat:
             return mat_mat_mul(self,other)
