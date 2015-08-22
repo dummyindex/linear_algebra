@@ -42,7 +42,7 @@ class Mat:
         self.colLen = len(listlist[0])
         for i in range(len(listlist)):
             for j in range(len(listlist[0])):
-                assert type(listlist[i][j])== int or type(listlist[i][j])==float
+                assert type(listlist[i][j])== int or type(listlist[i][j])==float or type(listlist[i][j]) == complex
         self.mat = [[listlist[i][j] for j in range(len(listlist[i]))]
                         for i in range(len(listlist))]
         

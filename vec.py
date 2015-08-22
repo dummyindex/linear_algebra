@@ -47,8 +47,8 @@ class Vec:
         '''
         self.vec = []
         for item in vec:
-            assert type(item)==int or type(item)==float
-            self.vec.append(float(item))
+            assert type(item)==int or type(item)==float or type(item)==complex
+            self.vec.append(float(item) if type(item)==int else item)
 
     def length(self):
         return len(self.vec)
@@ -61,7 +61,7 @@ class Vec:
         s3 = ""
         for i in range(self.length()):
             s1 += "---------"
-            s2 += str(i)+": "+str(round(self[i],2)) + '   ' 
+            s2 += str(i)+": "+str(round(self[i],2) if type(self[i])!=complex else self[i]) + sep 
         return s1+"\n"+s2+"\n"+s1+"\n"
     def __repr__(self):
         return "<vector>\n"+self.__str__()
