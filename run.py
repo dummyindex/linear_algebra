@@ -1,18 +1,6 @@
 from subprocess import call
 from source import *
-S1 = "Master! Here's what I can do for you."
-S2 = "\nPlease give me an index(a numeric value).\n"
-S3 = "It seems your input is not a number"
-S4 = "Sorry, the service you ordered is not available."
-S5 = "Please give the dimensions of the matrix, separate by space\n"
-S6 = "format of the dimension is wrong\n"
-S7 = "Please give me numeric values\n"
-S8 = "Now we are going to solve the equation.......\n"
-S9 = "Give A please.\n"
-S10 = "Give b please.\n"
-S11 = "Give the length of the vector please"
-S12 = "Please give me a numeric value\n"
-
+from sentences import *
 MENU = {
     1:"solve matrix equation Ax = b",
     2:"solve homogenious equation Ax = 0(shortcut for 1)",
@@ -21,11 +9,9 @@ MENU = {
 }
 
 
-
 def print_menu():
     for key in MENU:
         print(str(key)+":"+MENU[key])
-
 def menu():
     print(S1)
     print_menu();
@@ -40,7 +26,28 @@ def menu():
             print(S3)
 
     return idx
-def matrix_input():
+
+def string2numlist(s):
+    temp = ""
+    res = []
+    for i in range(len(s)):
+        if(s[i]==' '):
+            temp = ""
+        else:
+            temp += s[i]
+            if (i<len(s)-1 and s[i+1] == ' ') or (i==len(s)-1 and temp!=""):
+                try:
+                    x = int(temp)
+                    res.append(x)
+                except:
+                    print(S14)
+                    return None
+    return res
+            
+
+def mat_input():
+    row = None
+    col = None
     while(1):
         flag = False
         s = input(S5)
@@ -57,36 +64,59 @@ def matrix_input():
                 print(S7)
         else:
             print(S6)
-    print(S8)
+        
+    print(S15)
+    res = []
+    for i in range(row):
+        numlist = None
+        while(1):
+            s = input("row"+str(i)+" :\n")
+            numlist = string2numlist(s)
+            if numlist==None:
+                print(S14)
+            else:
+                break
+        res.append(numlist)
+    call(["clear"])
+    print(S16)
+    res = Mat(res)
+    print(res)
+    return res
+
 
 def vec_input():
-    length = None
-    while(1):
-        try:
-            length = int(input(S11))
-            break
-        except:
-            print(S12)
-    print(S13)
-    temp = []
-    for i in range(length):
-        x = None
-        while(1):
-            try:
-                x = input(S14)
-            else:
-                print(S12)
-        temp.append(x)
-
-        
-
-
+    numlist = None
+    while numlist == None:
+        s = input(S13)
+        numlist = string2numlist(s)
+    call(["clear"])
+    print(S17)
+    res = Vec(numlist)
+    print(res)
+    return res
 def solve_matrix_equation():
     call(["clear"])
     print(S9)
-    A = matrix_input()
+    A = mat_input()
     print(S10)
-    b = vector_input()
+    b = vec_input()
+    while len(b)!=A.rowLen:
+        print(S19)
+        b = vec_input()
+    print(S8)
+    print(S20)
+    print(A)
+    print(S21)
+    print(b)
+    ans = solve(A,b)
+    if ans !=None:
+        print(S22)
+        print(ans)
+    else:
+        
+    s = input("give any keyboard input to clear the console and back to the menu")
+    return 
+    
 
 def service_handler(idx):
     if idx==1:

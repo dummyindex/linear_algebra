@@ -53,9 +53,11 @@ def row_reduced_form(veclist):
     return veclist
 
 def row_reduce(mat):
-    return row_reduced_form(gaussian_elimination(mat.mat))
-
-
+    veclist =  row_reduced_form(gaussian_elimination(mat.mat))
+    temp = []
+    for vec in veclist:
+        temp.append(vec.vec)
+    return Mat(temp)
 def solve_homogenious(listlist):
     '''
     input: a 2-D list represents a linear equation system
@@ -90,6 +92,19 @@ def solve_homogenious(listlist):
 
     return x
 
+def solve(A,b):
+    #deep copy
+    assert type(A)==Mat and type(b)==Vec and A.rowLen == len(b)
+    A = A.mat
+    
+    matlist = [[ float(A[i][j]) if type(A[i][j])==float else complex(A[i][j]) for j in range(len(A[i]))]for i in range(len(A))]
+    veclist = [float(b[i]) if type(b[i])==float else complex(b[i]) for i in range(len(b))]
+    for i in range(len(veclist)):
+        matlist[i]+=[veclist[i]]
+    reduced_mat = row_reduce(Mat(matlist))
+    #has bugs, need fixed
+    ans = [reduced_mat[i][-1] for i in range(reduced_mat.rowLen-1)]
+    return Vec(ans)
 
 def getitem(mat , r):
     return mat.mat[r]
@@ -154,7 +169,9 @@ def inv_mat(mat):
     if not isInvertible:
         print("This matrix is not invertible")
         return None
-    print(matI)
+        print(matI)
     print("reduced matrix:")
     print(reduced_matrix)
     
+A = generate_mat(3,3)
+b = Vec([1,2,3])
