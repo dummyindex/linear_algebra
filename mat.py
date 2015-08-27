@@ -53,7 +53,22 @@ class Mat:
             res += str(Vec(i))+"\n"
             row+=1
         return res
-
+    def isRow(self, x):
+        return 0<=x and x<self.rowLen
+    def isCol(self, x):
+        return 0<=x and x<self.colLen
+    def sub_mat(self, r1, r2, c1, c2):
+        assert self.isRow(r1) and self.isRow(r2) and self.isCol(c1) and self.isCol(c2)
+        res = []
+        for r in range(r1,r2+1):
+            res.append([])
+            for c in range(c1,c2+1):
+                res[r].append(self.mat[r][c])
+        return Mat(res)
+    
+    def right_half_mat(self):
+        return self.sub_mat(0,self.rowLen-1, int(self.colLen/2), self.colLen-1)
+    
     __rmul__ = mat_scalar_mul
     def __mul__(self,other):
         if type(other) == Mat:

@@ -3,8 +3,12 @@ from source import *
 from random import *
 u = Vec([1,2,3])
 v = Vec([2,3,4])
-lllist = [[1,2,3],[2,3,4]]
-A = Mat([[-6,-2],[6,5]])
-B = Mat([[-1,4],[-9,2]])
+A = generate_mat(2,4)
+B = generate_mat(4,2)
+A = [
+    [-1,2,-1,-1,-1,-1],
+    [2,-3, 2, 1, 2, 2],
+    [0, 4,-1, 0, 1,-2]
+    ]
+Pc2b = row_reduce(Mat(A)).right_half_mat()
 
-print(5*A*B)

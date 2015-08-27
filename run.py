@@ -5,6 +5,8 @@ MENU = {
     1:"solve matrix equation Ax = b",
     2:"solve homogenious equation Ax = 0(shortcut for 1)",
     3:"compute the inverse of a matrix",
+    4:"row reduce a matrix",
+    5:"Change of basis (Coordinate System change",
     -1:"exit"
 }
 
@@ -113,7 +115,7 @@ def solve_matrix_equation():
         print(S22)
         print(ans)
     else:
-        
+        pass
     s = input("give any keyboard input to clear the console and back to the menu")
     return 
     
