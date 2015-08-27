@@ -1,4 +1,3 @@
-
 from vec import Vec
 def getitem(mat , r):
     return mat.mat[r]
