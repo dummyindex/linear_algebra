@@ -11,7 +11,8 @@ def generate_mat(n, m ,upper_limit = 10):
 def is_zero(n):
     if abs(n)<EPSILON:
         return True
-
+def zero_vector(n):
+    return Vec([0 for i in range(n)])
 def gaussian_elimination(listlist):
     if type(listlist)==Mat:
         listlist = [[listlist[i][j] for j in range(listlist.colLen)] for i in range(listlist.rowLen)]
@@ -103,8 +104,16 @@ def solve(A,b):
         matlist[i]+=[veclist[i]]
     reduced_mat = row_reduce(Mat(matlist))
     #has bugs, need fixed
-    ans = [reduced_mat[i][-1] for i in range(reduced_mat.rowLen-1)]
-    return Vec(ans)
+    ans = zero_vector(reduced_mat.colLen-1)
+    ans[-1] = -1
+    col_pos = reduced_mat.colLen-2
+    row_pos = reduced_mat.rowLen-1
+    while(row_pos>=0):
+        pass
+
+
+
+
 
 def getitem(mat , r):
     return mat.mat[r]
