@@ -5,7 +5,6 @@ from basic_utils import *
 def generate_mat(n, m ,upper_limit = 10):
     return Mat(generate_listlist(n, m ,upper_limit))
 
-
 def zero_vector(n):
     return Vec([0 for i in range(n)])
 def gaussian_elimination(listlist):
@@ -115,48 +114,12 @@ def solve(A,b):
     row_pos = reduced_mat.rowLen-1
     while(row_pos>=0):
         pass
-
-
-
-
-
 def getitem(mat , r):
     return mat.mat[r]
 
 def identity_mat(n):
     bar = [[1 if i==j else 0 for i in range(n)]for j in range(n)]
     return Mat(bar)
-
-def mat_mat_mul(mat1 , mat2):
-    assert mat1.colLen == mat2.rowLen
-    rowLen = mat1.rowLen
-    colLen = mat2.colLen
-    res = []
-    for r in range(rowLen):
-        res.append([])
-        for c in range(colLen):
-            acc = 0
-            for k in range(mat1.colLen):
-                acc+= mat1[r][k] * mat2[k][c]
-            res[r].append(acc)
-    return Mat(res)
-
-def mat_vec_mul(mat ,vec):
-    assert mat.colLen == vec.length()
-    res = []
-    for r in range(mat.rowLen):
-        acc = 0
-        for c in range(vec.length()):
-            acc += mat[r][c] * vec[c]
-        res.append(acc)
-    return Vec(res)
-
-def mat_scalar_mul(mat, k):
-    res = Mat([[mat[i][j] for j in range(mat.colLen)] for i in range(mat.rowLen)])
-    for i in range(mat.rowLen):
-        for j in range(mat.colLen):
-            res[i][j] *= k
-    return res
 
 def merge_by_col(mat1,mat2):
     assert mat1.rowLen == mat2.rowLen
