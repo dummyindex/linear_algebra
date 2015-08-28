@@ -1,16 +1,11 @@
 from mat import Mat
 from vec import Vec
 from random import *
-EPSILON = 0.000001
-def generate_listlist(n, m ,upper_limit = 10):
-    return [[randint(0, upper_limit) for j in range(m)]for i in range(n)]
-
+from basic_utils import *
 def generate_mat(n, m ,upper_limit = 10):
     return Mat(generate_listlist(n, m ,upper_limit))
 
-def is_zero(n):
-    if abs(n)<EPSILON:
-        return True
+
 def zero_vector(n):
     return Vec([0 for i in range(n)])
 def gaussian_elimination(listlist):
@@ -21,12 +16,14 @@ def gaussian_elimination(listlist):
     veclist = [Vec(listlist[i]) for i in range(vecNum)]
     length = veclist[0].length()
     added_rowIndex = set()
+    row_order = []
+    res = []
     for pivot in range(length):
         row = []
         rowIndex = None
         for i in range(vecNum):
             vec = veclist[i]
-            if(vec[pivot]!=0 and not i in added_rowIndex):
+            if(not is_zero(vec[pivot]) and not i in added_rowIndex):
                 row = vec
                 rowIndex = i
                 break
@@ -34,13 +31,20 @@ def gaussian_elimination(listlist):
             continue
         else:
             added_rowIndex.add(rowIndex)
+            row_order.append(rowIndex)
             for i in range(vecNum):
                 if i == rowIndex:
                     continue
                 vec = veclist[i]
                 if not is_zero(vec[pivot]):
                     veclist[i] = row - row[pivot]/vec[pivot]*vec
-    return veclist
+                
+    for idx in row_order:
+        res.append(veclist[idx])
+    for i in range(len(veclist)):
+        if not i in added_rowIndex:
+            res.append(veclist[i])
+    return res
 def row_reduced_form(veclist):
     for idx in range(len(veclist)):
         vec = veclist[idx]
@@ -51,6 +55,7 @@ def row_reduced_form(veclist):
                 break
         if(pivot_val!=None):
             veclist[idx] = (1.0/pivot_val)*vec
+
     return veclist
 
 def row_reduce(mat):
@@ -170,17 +175,16 @@ def merge_by_col(mat1,mat2):
 
 def inv_mat(mat):
     assert mat.rowLen == mat.colLen
-    n = mat.rowLen
-    matI = merge_by_col(mat,identity_mat(n))
-    reduced_matrix = row_reduce(matI)
-    isInvertible = True
-    
-    if not isInvertible:
-        print("This matrix is not invertible")
+    det = mat.det()
+    if( is_zero(det)):
         return None
-        print(matI)
-    print("reduced matrix:")
-    print(reduced_matrix)
+    else:
+        I = identity_mat(mat.rowLen)
+        new_mat = merge_by_col(mat,I)
+        reduced_mat = row_reduce(new_mat)
+        inv_mat = reduced_mat.right_half_mat()
+        return inv_mat
+
     
-A = generate_mat(3,3)
+A = generate_mat(2,2)
 b = Vec([1,2,3])

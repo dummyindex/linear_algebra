@@ -1,6 +1,7 @@
 from subprocess import call
 from source import *
 from sentences import *
+import  platform
 MENU = {
     1:"solve matrix equation Ax = b",
     2:"solve homogenious equation Ax = 0(shortcut for 1)",
@@ -9,6 +10,13 @@ MENU = {
     5:"Change of basis (Coordinate System change",
     -1:"exit"
 }
+
+def clear_console():
+    if platform.system()=='Linux':
+        call(["clear"])
+    elif platform.system()=='Windows':
+        call(["cls"])
+
 
 
 def print_menu():
@@ -79,7 +87,6 @@ def mat_input():
             else:
                 break
         res.append(numlist)
-    call(["clear"])
     print(S16)
     res = Mat(res)
     print(res)
@@ -91,13 +98,16 @@ def vec_input():
     while numlist == None:
         s = input(S13)
         numlist = string2numlist(s)
-    call(["clear"])
+    clear_console()
     print(S17)
     res = Vec(numlist)
     print(res)
     return res
+
+def wait_for_viewing_answer():
+    s = input("give any keyboard input to clear the console and back to the menu")
 def solve_matrix_equation():
-    call(["clear"])
+    clear_console()
     print(S9)
     A = mat_input()
     print(S10)
@@ -116,22 +126,52 @@ def solve_matrix_equation():
         print(ans)
     else:
         pass
-    s = input("give any keyboard input to clear the console and back to the menu")
+    wait_for_viewing_answer()
     return 
     
+def inv_mat_handler():
+    mat = None
+    while(1):
+        print(S23)
+        mat = mat_input()
+        if mat.colLen!=mat.rowLen:
+            clear_console()
+            print(S24)
+        else:
+            break
+    clear_console()
+    print(S16)
+    print(mat)
+    inv = inv_mat(mat)
+    if(inv==None):
+        print(S25)
+    else:
+        print(S26)
+        print(inv)
+    wait_for_viewing_answer()
+
+SERVICES = {
+    #1:solve_matrix_equation,
+    3:inv_mat_handler
+}
 
 def service_handler(idx):
-    if idx==1:
-        solve_matrix_equation()
+    if idx in SERVICES.keys():
+        SERVICES[idx]()
+    else:
+        print(S4)
+        wait_for_viewing_answer()
+    return
 
 
 def run():
+    clear_console()
     while(1):
         idx = menu()
         if idx==-1:
             return
         service_handler(idx)
-        call(["clear"])
+        clear_console()
         
 
 if "__main__"==__name__:

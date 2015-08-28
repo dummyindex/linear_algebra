@@ -21,3 +21,7 @@ S20 = "\n\nMatrix A:\n"
 S21 = "\nVector b:\n"
 
 S22 = "One solution for this equation:\n"
+S23 = "Please give a square matrix\n"
+S24 = "It seems you did not input a square matrix\n"
+S25 = "This matrix is not invertible\n"
+S26 = "There's the inverse:\n"
