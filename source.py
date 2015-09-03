@@ -148,6 +148,20 @@ def inv_mat(mat):
         inv_mat = reduced_mat.right_half_mat()
         return inv_mat
 
+
+def check_eigenvalue(mat,v):
+    assert mat.colLen==mat.rowLen
+    foo = mat.copy()
+    for i in range(mat.rowLen):
+        foo[i][i] -= v
+    det = foo.det()
+    if det==0:
+        return True
+    else:
+        return False
     
+
+    
+
 A = generate_mat(2,2)
 b = Vec([1,2,3])
