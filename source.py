@@ -159,9 +159,6 @@ def check_eigenvalue(mat,v):
         return True
     else:
         return False
-    
-
-    
 
 A = generate_mat(2,2)
 b = Vec([1,2,3])

@@ -2,6 +2,7 @@ from subprocess import call
 from source import *
 from sentences import *
 import  platform
+import os
 MENU = {
     1:"solve matrix equation Ax = b",
     2:"solve homogenious equation Ax = 0(shortcut for 1)",
@@ -15,7 +16,9 @@ def clear_console():
     if platform.system()=='Linux':
         call(["clear"])
     elif platform.system()=='Windows':
-        call(["cls"])
+        os.system("cls")
+    else:
+        print("\n"*100)
 
 
 
