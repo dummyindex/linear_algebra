@@ -1,3 +1,4 @@
+from basic_utils import *
 def add(u,v):
     '''
     input:2 vectors
@@ -16,7 +17,7 @@ def getitem(v,k):
 
 def setitem(v,k,val):
     assert v.length() > k 
-    v.vec[k] = float(val)
+    v.vec[k] = float(val) if type(val)==int else val
 
 def scalar_mul(v,k):
     
@@ -31,7 +32,10 @@ def dot_product(v,u):
         res += v[i]*u[i]
     return res
 
-
+def vec_cmp(v1,v2):
+    assert len(v1)==len(v2)
+    diff = v1-v2
+    return is_zero(diff*diff)
 
 class Vec:
     __add__ = add
@@ -39,6 +43,7 @@ class Vec:
     __setitem__ = setitem
     __rmul__ = scalar_mul
     __neg__ = neg
+    __eq__ = vec_cmp
     def __init__(self,vec):
         '''
         constructor
