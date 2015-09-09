@@ -11,7 +11,8 @@ Basic operations on Matrices and vectors are available!
 Vector-vector, matrix-matrix addition  
 matrix-matrix, matrix- vector, vector-matrix multiplication  
 scalar-matrix, scalar-vector multiplication.  
-  
+
+vec.length returns its length under dot product's definition
   
 Available service:    
 3.Invertible Matrices  
