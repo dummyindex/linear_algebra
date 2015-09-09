@@ -17,10 +17,12 @@ Available service:
 3.Invertible Matrices  
   
   
-Implemented functions:  
+APIs:  
 solve_homogenious  
 inv_mat  
-row_reduce  
+row_reduce 
+check_eigenvalue
+orthogonalize
 
 
 Future waitlists:  
