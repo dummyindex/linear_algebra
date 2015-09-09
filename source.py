@@ -2,8 +2,16 @@ from mat import Mat
 from vec import Vec
 from random import *
 from basic_utils import *
+from math import *
 def generate_mat(n, m ,upper_limit = 10):
     return Mat(generate_listlist(n, m ,upper_limit))
+def generate_complex_mat(n,m, upper_limit = 10):
+    return Mat(generate_complex_listlist(n, m ,upper_limit))
+def generate_vec(n, upper_limit = 10):
+    return Vec([randint(0,upper_limit) for i in range(n)])
+def generate_veclist(listLen, dim , upper_limit = 10):
+    return [generate_vec(dim,upper_limit) for i in range(listLen)]
+    
 
 def zero_vector(n):
     return Vec([0 for i in range(n)])
@@ -13,7 +21,7 @@ def gaussian_elimination(listlist):
     assert len(listlist)>0
     vecNum = len(listlist)
     veclist = [Vec(listlist[i]) for i in range(vecNum)]
-    length = veclist[0].length()
+    length = len(veclist[0])
     added_rowIndex = set()
     row_order = []
     res = []
@@ -70,8 +78,8 @@ def solve_homogenious(listlist):
     '''    
     veclist = gaussian_elimination(listlist)
     print(veclist)
-    x = zero_vector(veclist[0].length())
-    vecLen = veclist[0].length()
+    x = zero_vector(len(veclist[0]))
+    vecLen = len(veclist[0])
     vecNum = len(veclist)
     col_pos = vecLen-1
     row_pos = vecNum-1
@@ -159,6 +167,29 @@ def check_eigenvalue(mat,v):
         return True
     else:
         return False
+
+def orthogonalize(something):
+    if type(something)==list:
+        return orthogonalize_veclist(something)
+
+
+def orthogonalize_veclist(veclist):
+    '''
+    Gram Schmidt Process!
+    input : a veclist
+    output: a orthogonalized veclist without change the value of veclist
+    '''
+    if len(veclist)==0:
+        return []
+    lengths = [veclist[0].length()**2]
+    res = [veclist[0]]
+    for i in range(1,len(veclist)):
+        x = veclist[i].copy()
+        for j in range(len(res)):
+            x = x - (x*res[j]/lengths[j])*res[j]
+        res.append(x)
+        lengths.append(x.length()**2)
+    return res
 
 A = generate_mat(2,2)
 b = Vec([1,2,3])

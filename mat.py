@@ -30,11 +30,11 @@ def mat_mat_mul(mat1 , mat2):
     return Mat(res)
 
 def mat_vec_mul(mat ,vec):
-    assert mat.colLen == vec.length()
+    assert mat.colLen == len(vec)
     res = []
     for r in range(mat.rowLen):
         acc = 0
-        for c in range(vec.length()):
+        for c in range(len(vec)):
             acc += mat[r][c] * vec[c]
         res.append(acc)
     return Vec(res)

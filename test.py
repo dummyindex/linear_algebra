@@ -25,18 +25,13 @@ def test_inv(case = 10, n = 5):
             continue
         print( (A*inv)==I)
         #print(A*inv)
+def test_orthogonalize(vecLen = 4, dim = 4):
+    veclist = generate_veclist(vecLen,dim)
+    veclist = orthogonalize(veclist)
+    for i in range(vecLen):
+        for j in range(vecLen):
+            if i!=j:
+                print("iszero? "+str(is_zero(veclist[i]*veclist[j])))
+    print(veclist)
+    return veclist
 
-
-A = Mat([[1,-2],[1,3]])
-p = Mat([[2,0],[-1,1]])
-p_inv = inv_mat(p)
-C = p_inv*A*p
-v = Vec([2,-1+1j])
-lam = (2-1j)
-print(A*v==lam*v)
-'''
-A = Mat([[3,-3],[1,1]])
-p = Mat([[1/3,2**(1/2)/3],[1,0]])
-p_inv = inv_mat(p)
-C = p_inv*A*p
-'''
