@@ -1,5 +1,5 @@
 # linear_algebra
-Naive python implementation for eudcational purpose, not industrial.  
+Naive python implementation for educational purpose, not industrial.  
 Written by dummyIndex, an incoming freshman at UCSB during MATH 4A(now) in FSSP.  
 Run "run.py" in your console or in python REPL (only supports invertible matrices).  
 Or if you know python, just import the functions from the "source" module, which are more helpful than the run run.py, an interface for students without programming experience.  
