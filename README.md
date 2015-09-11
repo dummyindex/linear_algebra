@@ -18,9 +18,9 @@ Available service:
   
 Classes:
   Vec- a vector, take a list as the argument  
-    operators:*,-,+  
+    operators:\*,-,+  
   Mat- a matrix, take a 2D list as the argument  
-    operators:*,-,+  
+    operators:\*,-,+  
 
 
 APIs:  
