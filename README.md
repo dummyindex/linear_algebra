@@ -26,7 +26,7 @@ Classes:
 APIs:  
 solve_homogenious  
 inv_mat  
-row_reduce 
+row_reduce  
 check_eigenvalue  
 orthogonalize  
 det- the method of Mat, which return determinants by cofactor definition  
