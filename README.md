@@ -33,7 +33,7 @@ det- the method of Mat, which return determinants by cofactor definition
 length- the method of Vec, which return the length of a vector under dot-product definition  
 
 Waitlists:  
-change of basis 
+change of basis   
 eigenvectors  
 (following not included in MATH 4A)  
 QR factorization  
