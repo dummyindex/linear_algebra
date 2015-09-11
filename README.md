@@ -22,8 +22,8 @@ APIs:
 solve_homogenious  
 inv_mat  
 row_reduce 
-check_eigenvalue
-orthogonalize
+check_eigenvalue  
+orthogonalize  
 
 
 Future waitlists:  
