@@ -191,5 +191,19 @@ def orthogonalize_veclist(veclist):
         lengths.append(x.length()**2)
     return res
 
+def transition_matrix(B,C):
+    '''
+    transition matrix from B to C
+    '''
+
+    foo_mat = merge_by_col(B,C)
+    row_reduced = row_reduce(foo_mat)
+    return row_reduced.right_half_mat()
+    
+    
+
+
+
+
 A = generate_mat(2,2)
 b = Vec([1,2,3])
