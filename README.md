@@ -15,7 +15,7 @@ scalar-matrix, scalar-vector multiplication.
 Available service:    
 3.Invertible Matrices  
   
-Classes:
+Classes:  
   Vec- a vector, take a list as the argument  
     operators:\*,-,+  
   Mat- a matrix, take a 2D list as the argument  
