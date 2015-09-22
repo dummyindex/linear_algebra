@@ -4,7 +4,7 @@ Written by dummyIndex, an incoming freshman at UCSB during MATH 4A(now) in FSSP.
 Run "run.py" in your console or in python REPL (only supports invertible matrices).  
 Or if you know python, just import the functions from the "source" module, which are more helpful than run() in run module, an interface for students without programming experience.  
 
-Brief view:  
+Brief overview:  
 
 Basic operations on Matrices and vectors are available!  
 
