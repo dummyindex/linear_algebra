@@ -2,10 +2,9 @@
 Naive python implementation for educational purpose, not industrial.  
 Written by dummyIndex, an incoming freshman at UCSB during MATH 4A(now) in FSSP.  
 Run "run.py" in your console or in python REPL (only supports invertible matrices).  
-Or if you know python, just import the functions from the "source" module, which are more helpful than the run run.py, an interface for students without programming experience.  
-Docs for the functions may be added later.  
+Or if you know python, just import the functions from the "source" module, which are more helpful than run() in run module, an interface for students without programming experience.  
 
-Now supports windows and linux's console!  
+Brief view:  
 
 Basic operations on Matrices and vectors are available!  
 
