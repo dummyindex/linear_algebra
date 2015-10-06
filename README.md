@@ -1,6 +1,6 @@
 # linear_algebra
 Naive python implementation for educational purpose, not industrial.  
-Written by dummyIndex, an incoming freshman at UCSB during MATH 4A(now) in FSSP.  
+Written by dummyIndex, in 2015 August. 2019er, undergraduate, freshman year in 2015.
 Run "run.py" in your console or in python REPL (only supports invertible matrices).  
 Or if you know python, just import the functions from the "source" module, which are more helpful than run() in run module, an interface for students without programming experience.  
 
@@ -43,4 +43,5 @@ LU
 ##Graphic Interface needed!!!!!!!
 
 Tortured by history 2A! no time left to implement anything before 2015.9.12.
+Have time to implement but I'm solving other problems. If you have any need, feel free to email me or notify me through weibo or wechat or facebook or twitter or text.
 
