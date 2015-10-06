@@ -28,11 +28,11 @@ inv_mat
 row_reduce  
 check_eigenvalue  
 orthogonalize  
+transition_matrix
 det- the method of Mat, which return determinants by cofactor definition  
 length- the method of Vec, which return the length of a vector under dot-product definition  
 
-Waitlists:  
-change of basis   
+Waitlists:
 eigenvectors  
 (following not included in MATH 4A)  
 QR factorization  
